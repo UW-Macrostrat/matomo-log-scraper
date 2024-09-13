@@ -13,3 +13,4 @@ source .env
 python3 import-script/import_logs.py "$LOG_PATH" --dry-run --url "$MATOMO_URL" --token-auth "$API_TOKEN"
 ```
 
+
