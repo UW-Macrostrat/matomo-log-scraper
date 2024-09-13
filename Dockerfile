@@ -1,7 +1,7 @@
 FROM python:3.8
 
 # Install cron
-RUN apt-get update && apt-get install -y cron
+RUN apt-get update -y && apt-get install -y cron
 
 # Set the working directory
 WORKDIR /app
@@ -10,6 +10,7 @@ WORKDIR /app
 COPY ./import-script/import_logs.py import_logs.py
 COPY ./import.sh import.sh
 COPY ./logrotate.sh logrotate.sh
+COPY ./crontab /etc/cron.d/import-cron
 
 # Make the scripts executable
 RUN chmod +x import.sh logrotate.sh
