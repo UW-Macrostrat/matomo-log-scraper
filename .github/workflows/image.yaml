@@ -14,4 +14,3 @@ jobs:
     secrets: inherit
     with:
       image: 'hub.opensciencegrid.org/macrostrat/traefik-log-exporter'
-
