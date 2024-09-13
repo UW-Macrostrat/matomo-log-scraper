@@ -11,7 +11,7 @@ on:
 jobs:
   call-build-image:
     uses: UW-Macrostrat/build-push/.github/workflows/build-push.yaml@main
+    secrets: inherit
     with:
       image: 'hub.opensciencegrid.org/macrostrat/traefik-log-exporter'
-      username: ${{ vars.HARBOR_CLI_NAME }}
-      password: ${{ secrets.HARBOR_CLI_SECRET }}
+
