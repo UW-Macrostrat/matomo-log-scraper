@@ -1,0 +1,2 @@
+# Run logrotate.sh daily at midnight
+0 0 * * * /app/logrotate.sh >> /var/log/cron.log 2>&1

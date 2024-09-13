@@ -1,0 +1,17 @@
+name: Build image
+
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - 'v*.*.*' # glob for semver tags (including prereleases)
+  pull_request:
+    branches: [main]
+
+jobs:
+  call-build-image:
+    uses: UW-Macrostrat/build-push/build-push.yaml@main
+    with:
+      image: 'hub.opensciencegrid.org/macrostrat/traefik-log-exporter'
+      username: ${{ vars.HARBOR_CLI_NAME }}
+      password: ${{ secrets.HARBOR_CLI_SECRET }}

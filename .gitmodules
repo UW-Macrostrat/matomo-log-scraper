@@ -1,0 +1,3 @@
+[submodule "import-script"]
+	path = import-script
+	url = git@github.com:matomo-org/matomo-log-analytics.git
