@@ -6,11 +6,21 @@ It keeps 30 days of logs compressed in the PVC on the cluster for debugging purp
 
 # Testing
 
+## The Script
+
 ```bash
 source .env
 
 # Construct the command with the environment variables
 python3 import-script/import_logs.py "$LOG_PATH" --dry-run --url "$MATOMO_URL" --token-auth "$API_TOKEN"
+
+# Print out the command that was just ran
+echo "python3 import-script/import_logs.py \"$LOG_PATH\" --dry-run --url \"$MATOMO_URL\" --token-auth \"$API_TOKEN\""
 ```
 
+## The Docker Image
 
+```bash
+docker build -t matomo-log-scraper:latest .
+docker run --env-file .env --rm -it matomo-log-scraper:latest
+```

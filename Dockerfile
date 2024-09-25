@@ -1,7 +1,7 @@
 FROM python:3.8
 
 # Install cron
-RUN apt-get update -y && apt-get install -y cron
+RUN apt-get update -y && apt-get install -y cron logrotate
 
 # Set the working directory
 WORKDIR /app
@@ -25,4 +25,4 @@ RUN crontab /etc/cron.d/import-cron
 RUN touch /var/log/cron.log
 
 # Start the cron service and the application
-CMD cron && tail -f /var/log/cron.log
+CMD printenv > /etc/environment && cron && tail -f /var/log/cron.log
