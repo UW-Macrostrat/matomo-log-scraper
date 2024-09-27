@@ -2,7 +2,7 @@
 
 # Create a temporary logrotate configuration file
 cat <<EOF > /tmp/logrotate.conf
-$LOG_PATH {
+"$LOG_PATH" {
     daily
     rotate 31
     compress
@@ -13,8 +13,10 @@ $LOG_PATH {
 }
 EOF
 
+cat /tmp/logrotate.conf
+
 # Run logrotate with the temporary configuration file
-/usr/sbin/logrotate /tmp/logrotate.conf
+/usr/sbin/logrotate --force -d /tmp/logrotate.conf
 
 # Clean up the temporary configuration file
 rm /tmp/logrotate.conf

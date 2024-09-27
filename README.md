@@ -15,12 +15,12 @@ source .env
 python3 import-script/import_logs.py "$LOG_PATH" --dry-run --url "$MATOMO_URL" --token-auth "$API_TOKEN"
 
 # Print out the command that was just ran
-echo "python3 import-script/import_logs.py \"$LOG_PATH\" --dry-run --url \"$MATOMO_URL\" --token-auth \"$API_TOKEN\""
+echo "python3 import-script/import_logs.py \"$LOG_PATH\" --url \"$MATOMO_URL\" --token-auth \"$API_TOKEN\""
 ```
 
 ## The Docker Image
 
 ```bash
 docker build -t matomo-log-scraper:latest .
-docker run --env-file .env --rm -it matomo-log-scraper:latest
+docker run --env-file .env --rm -it -v $PWD/test-logs:/app/test-logs matomo-log-scraper:latest
 ```
