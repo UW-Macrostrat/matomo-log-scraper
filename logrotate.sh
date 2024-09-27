@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Running logrotate"
+
 # Create a temporary logrotate configuration file
 cat <<EOF > /tmp/logrotate.conf
 "$LOG_PATH" {
@@ -16,7 +18,7 @@ EOF
 cat /tmp/logrotate.conf
 
 # Run logrotate with the temporary configuration file
-/usr/sbin/logrotate --force -d /tmp/logrotate.conf
+/usr/sbin/logrotate -v /tmp/logrotate.conf
 
 # Clean up the temporary configuration file
 rm /tmp/logrotate.conf
