@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# This file is run on successful log rotation
+
 # Define the log file and the rotated log file
 ROTATED_LOG_FILE="$LOG_PATH.1"
 
@@ -7,7 +9,7 @@ ROTATED_LOG_FILE="$LOG_PATH.1"
 if [ -f "$ROTATED_LOG_FILE" ]; then
     echo "Log rotation successful. Processing the rotated log file."
     # Call the import script
-    python3 /app/import_logs.py --dry-run "$ROTATED_LOG_FILE" --url "$MATOMO_URL" --token-auth "$API_TOKEN"
+    python3 /app/import_logs.py "$ROTATED_LOG_FILE" --url "$MATOMO_URL" --token-auth "$API_TOKEN"
 
     # Find the PID of the traefik process
     TRAEFIK_PID=$(pgrep traefik)
